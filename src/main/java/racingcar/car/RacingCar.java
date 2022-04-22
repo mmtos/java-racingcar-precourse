@@ -20,6 +20,10 @@ public class RacingCar {
         position = moveStrategy.tryMove(position);
     }
 
+    public RacingCarName getName() {
+        return name;
+    }
+
     public RacingCarPosition getRacingCarPosition() {
         return position;
     }
