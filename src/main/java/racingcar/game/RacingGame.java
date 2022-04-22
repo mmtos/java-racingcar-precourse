@@ -11,6 +11,7 @@ import racingcar.game.strategy.RacingCarWinnerFindStrategy;
 import racingcar.view.RacingGameView;
 
 public class RacingGame {
+    private static final String EMPTY_RACING_CAR_MESSAGE = "최소 1대의 자동차 이름을 입력해 주세요.";
     private static String CAR_NAME_DELIMITER = ",";
     private RacingGameView racingGameView;
     private RacingCars racingCars = new RacingCars();
@@ -62,7 +63,7 @@ public class RacingGame {
 
     private void checkRacingCarNameListEmpty(List<RacingCarName> racingCarNameList) {
         if (racingCarNameList.size() == 0) {
-            throw new IllegalStateException("최소 1대의 자동차 이름을 입력해 주세요.");
+            throw new IllegalStateException(EMPTY_RACING_CAR_MESSAGE);
         }
     }
 
