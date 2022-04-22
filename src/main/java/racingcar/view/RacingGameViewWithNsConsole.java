@@ -6,7 +6,7 @@ import java.util.StringJoiner;
 import racingcar.car.RacingCarDTO;
 import racingcar.car.RacingCarName;
 
-public class RacingGameViewWithNsConsole implements RacingGameView{
+public class RacingGameViewWithNsConsole implements RacingGameView {
     private static final String DASH = "-";
 
     @Override
@@ -28,8 +28,9 @@ public class RacingGameViewWithNsConsole implements RacingGameView{
 
     @Override
     public void printStageResult(List<RacingCarDTO> racingCarDTOList) {
-        for(RacingCarDTO racingCarDTO: racingCarDTOList){
-            System.out.println(racingCarDTO.getName() + " : " + makeLineMessageFromPosition(racingCarDTO.getPosition()));
+        for (RacingCarDTO racingCarDTO : racingCarDTOList) {
+            System.out.println(
+                    racingCarDTO.getName() + " : " + makeLineMessageFromPosition(racingCarDTO.getPosition()));
         }
         System.out.println();
     }
@@ -37,15 +38,15 @@ public class RacingGameViewWithNsConsole implements RacingGameView{
     @Override
     public void printWinner(List<RacingCarName> winners) {
         StringJoiner joiner = new StringJoiner(", ");
-        for(RacingCarName winner : winners){
+        for (RacingCarName winner : winners) {
             joiner.add(winner.getName());
         }
-        System.out.println("최종 우승자: "+ joiner.toString());
+        System.out.println("최종 우승자: " + joiner.toString());
     }
 
     private String makeLineMessageFromPosition(int position) {
         String lineMessage = "";
-        for(int i=0; i<position;i++){
+        for (int i = 0; i < position; i++) {
             lineMessage += DASH;
         }
         return lineMessage;

@@ -9,7 +9,7 @@ public class RacingCarDTO {
         this.position = position;
     }
 
-    public static RacingCarDTO of(RacingCar racingCar){
+    public static RacingCarDTO of(RacingCar racingCar) {
         return new RacingCarDTO(
                 racingCar.getRacingCarName().getName(),
                 racingCar.getRacingCarPosition().getPosition()

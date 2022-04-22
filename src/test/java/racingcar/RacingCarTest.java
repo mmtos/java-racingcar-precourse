@@ -1,6 +1,6 @@
 package racingcar;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
 
@@ -15,31 +15,34 @@ import racingcar.car.RacingCars;
 
 public class RacingCarTest {
     private static final int MOVING_FORWARD = 4;
-    private static final int STOP = 3;
 
     @Test
-    void 자동차_전진(){
+    void 자동차_전진() {
         try (final MockedStatic<Randoms> mock = mockStatic(Randoms.class)) {
             mock.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt())).thenReturn(MOVING_FORWARD);
             RacingCar racingCar = new RacingCar(new RacingCarName("test"));
             RacingCarPosition prevRacingCarPosition = racingCar.getRacingCarPosition();
             racingCar.tryMove();
-            assertThat(racingCar.getRacingCarPosition()).isEqualTo(new RacingCarPosition(prevRacingCarPosition.getPosition()+1));
+            assertThat(racingCar.getRacingCarPosition()).isEqualTo(
+                    new RacingCarPosition(prevRacingCarPosition.getPosition() + 1));
         }
     }
 
     @Test
-    void N대_자동차_전진(){
+    void N대_자동차_전진() {
         try (final MockedStatic<Randoms> mock = mockStatic(Randoms.class)) {
             mock.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt())).thenReturn(MOVING_FORWARD);
             RacingCars racingCars = new RacingCars();
             racingCars.addRacingCar(new RacingCar(new RacingCarName("test1")));
             racingCars.addRacingCar(new RacingCar(new RacingCarName("test2")));
             racingCars.tryMove();
-            List<RacingCar> racingCarList = racingCars.getRacingCarList();
-            for(RacingCar racingCar : racingCarList){
-                assertThat(racingCar.getRacingCarPosition()).isEqualTo(new RacingCarPosition(1));
-            }
+            assertThatAllRacingCarMove(racingCars.getRacingCarList());
+        }
+    }
+
+    void assertThatAllRacingCarMove(List<RacingCar> racingCarList) {
+        for (RacingCar racingCar : racingCarList) {
+            assertThat(racingCar.getRacingCarPosition()).isEqualTo(new RacingCarPosition(1));
         }
     }
 }

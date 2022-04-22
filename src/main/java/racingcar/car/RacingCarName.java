@@ -6,10 +6,10 @@ public class RacingCarName {
     private final String name;
 
     public RacingCarName(String name) {
-        if(name.length() > 5){
+        if (name.length() > 5) {
             throw new IllegalArgumentException("이름은 5자까지만 허용됩니다.");
         }
-        if(name == null || "".equals(name)){
+        if (name == null || "".equals(name)) {
             throw new IllegalArgumentException("자동차이름을 빈 값으로 설정할 수 없습니다.");
         }
         this.name = name;
