@@ -6,6 +6,9 @@ public class RacingCarName {
     private final String name;
 
     public RacingCarName(String name) {
+        if(name == null || name.length() >5){
+            throw new IllegalArgumentException("이름은 5자까지만 허용됩니다.");
+        }
         this.name=name;
     }
 

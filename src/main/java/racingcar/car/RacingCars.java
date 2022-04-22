@@ -29,4 +29,8 @@ public class RacingCars {
         }
         return racingCarList;
     }
+
+    public void reset(){
+        racingCars = new LinkedHashMap<>();
+    }
 }

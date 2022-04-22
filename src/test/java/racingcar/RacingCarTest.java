@@ -44,17 +44,4 @@ public class RacingCarTest {
             }
         }
     }
-
-    @Test
-    void 이름_중복_오류_테스트(){
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            RacingCars racingCars = new RacingCars();
-            racingCars.addRacingCar(new RacingCar(new RacingCarName("test1")));
-            racingCars.addRacingCar(new RacingCar(new RacingCarName("test1")));
-        });
-    }
-
-
-
-
 }
