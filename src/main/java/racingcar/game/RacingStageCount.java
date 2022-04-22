@@ -8,7 +8,10 @@ public class RacingStageCount {
         try{
             this.stageCount = Integer.parseInt(stageCount);
         }catch (NumberFormatException e){
-            throw new IllegalArgumentException("시도횟수는 숫자여야 한다.");
+            throw new IllegalArgumentException("시도횟수는 1 이상의 숫자여야 합니다.");
+        }
+        if(this.stageCount == 0 ){
+            throw new IllegalArgumentException("시도횟수는 1 이상의 숫자여야 합니다.");
         }
     }
 

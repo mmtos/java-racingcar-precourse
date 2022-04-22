@@ -41,4 +41,11 @@ public class RacingGameTest {
             new RacingStageCount("dkw");
         });
     }
+
+    @Test
+    void 시도횟수로_0이_입력된_경우(){
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            new RacingStageCount("0");
+        });
+    }
 }
