@@ -1,7 +1,6 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-
 import org.junit.jupiter.api.Test;
 import racingcar.car.RacingCar;
 import racingcar.car.RacingCarName;

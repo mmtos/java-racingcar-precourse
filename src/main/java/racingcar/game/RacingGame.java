@@ -1,11 +1,14 @@
 package racingcar.game;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import racingcar.car.RacingCar;
 import racingcar.car.RacingCarDTO;
 import racingcar.car.RacingCarName;
 import racingcar.car.RacingCars;
+import racingcar.game.strategy.DefaultRacingCarWinnerFindStrategy;
+import racingcar.game.strategy.RacingCarWinnerFindStrategy;
 import racingcar.view.RacingGameView;
 
 public class RacingGame {
@@ -13,6 +16,7 @@ public class RacingGame {
     private RacingGameView racingGameView;
     private RacingCars racingCars = new RacingCars();
     private RacingStageCount racingStageCount;
+    private RacingCarWinnerFindStrategy racingCarWinnerFindStrategy = new DefaultRacingCarWinnerFindStrategy();
 
     public RacingGame(RacingGameView racingGameView) {
         this.racingGameView = racingGameView;
@@ -24,8 +28,9 @@ public class RacingGame {
         for(int i = 0; i< racingStageCount.getStageCount(); i++){
             doStage();
         }
+        List<RacingCarName> winners = racingCarWinnerFindStrategy.pickWinners(racingCars);
+        racingGameView.printWinner(winners);
     }
-
 
     private void initGame(){
         try{

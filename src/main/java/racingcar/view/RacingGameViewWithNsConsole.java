@@ -2,7 +2,9 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import java.util.StringJoiner;
 import racingcar.car.RacingCarDTO;
+import racingcar.car.RacingCarName;
 
 public class RacingGameViewWithNsConsole implements RacingGameView{
     private static final String DASH = "-";
@@ -30,6 +32,15 @@ public class RacingGameViewWithNsConsole implements RacingGameView{
             System.out.println(racingCarDTO.getName() + " : " + makeLineMessageFromPosition(racingCarDTO.getPosition()));
         }
         System.out.println();
+    }
+
+    @Override
+    public void printWinner(List<RacingCarName> winners) {
+        StringJoiner joiner = new StringJoiner(", ");
+        for(RacingCarName winner : winners){
+            joiner.add(winner.getName());
+        }
+        System.out.println("최종 우승자: "+ joiner.toString());
     }
 
     private String makeLineMessageFromPosition(int position) {
