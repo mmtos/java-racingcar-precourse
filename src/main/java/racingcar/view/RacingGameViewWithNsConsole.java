@@ -1,8 +1,12 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
+import racingcar.car.RacingCarDTO;
 
 public class RacingGameViewWithNsConsole implements RacingGameView{
+    private static final String DASH = "-";
+
     @Override
     public String takeRacingCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -11,9 +15,31 @@ public class RacingGameViewWithNsConsole implements RacingGameView{
 
     @Override
     public String takeRacingStageCount() {
-        System.out.println("시도할 회수");
+        System.out.println("시도할 회수는 몇회인가요?");
         return Console.readLine();
     }
+
+    @Override
+    public void printStageStart() {
+        System.out.println("실행 결과");
+    }
+
+    @Override
+    public void printStageResult(List<RacingCarDTO> racingCarDTOList) {
+        for(RacingCarDTO racingCarDTO: racingCarDTOList){
+            System.out.println(racingCarDTO.getName() + " : " + makeLineMessageFromPosition(racingCarDTO.getPosition()));
+        }
+        System.out.println();
+    }
+
+    private String makeLineMessageFromPosition(int position) {
+        String lineMessage = "";
+        for(int i=0; i<position;i++){
+            lineMessage += DASH;
+        }
+        return lineMessage;
+    }
+
 
     @Override
     public void printErrorMessage(Exception e) {

@@ -7,12 +7,12 @@ public class RacingCar {
 
     private static final RacingCarPosition INIT_POSITION = new RacingCarPosition(0);
 
-    private final RacingCarName name;
+    private final RacingCarName racingCarName;
     private RacingCarPosition position;
     private RacingCarMoveStrategy moveStrategy = new RandomRacingCarMoveStrategy();
 
-    public RacingCar(RacingCarName name) {
-        this.name = name;
+    public RacingCar(RacingCarName racingCarName) {
+        this.racingCarName = racingCarName;
         this.position = INIT_POSITION;
     }
 
@@ -20,8 +20,8 @@ public class RacingCar {
         position = moveStrategy.tryMove(position);
     }
 
-    public RacingCarName getName() {
-        return name;
+    public RacingCarName getRacingCarName() {
+        return racingCarName;
     }
 
     public RacingCarPosition getRacingCarPosition() {

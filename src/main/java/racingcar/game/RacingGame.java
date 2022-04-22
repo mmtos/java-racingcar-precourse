@@ -3,6 +3,7 @@ package racingcar.game;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.car.RacingCar;
+import racingcar.car.RacingCarDTO;
 import racingcar.car.RacingCarName;
 import racingcar.car.RacingCars;
 import racingcar.view.RacingGameView;
@@ -19,7 +20,12 @@ public class RacingGame {
 
     public void start() {
         initGame();
+        racingGameView.printStageStart();
+        for(int i = 0; i< racingStageCount.getStageCount(); i++){
+            doStage();
+        }
     }
+
 
     private void initGame(){
         try{
@@ -54,4 +60,17 @@ public class RacingGame {
         racingStageCount = new RacingStageCount(stageCountInput);
     }
 
+    private void doStage() {
+        racingCars.tryMove();
+        List<RacingCar> racingCarList = racingCars.getRacingCarList();
+        racingGameView.printStageResult(getRacingCarDTOs(racingCarList));
+    }
+
+    private List<RacingCarDTO> getRacingCarDTOs(List<RacingCar> racingCarList) {
+        List<RacingCarDTO> racingCarDTOList = new ArrayList<>();
+        for(RacingCar racingCar : racingCarList){
+            racingCarDTOList.add(RacingCarDTO.of(racingCar));
+        }
+        return racingCarDTOList;
+    }
 }

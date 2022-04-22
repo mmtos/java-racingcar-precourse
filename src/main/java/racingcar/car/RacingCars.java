@@ -10,7 +10,7 @@ public class RacingCars {
     private Map<RacingCarName, RacingCar> racingCars = new LinkedHashMap<>();
 
     public void addRacingCar(RacingCar racingCar) {
-        RacingCar car = racingCars.putIfAbsent(racingCar.getName(),racingCar);
+        RacingCar car = racingCars.putIfAbsent(racingCar.getRacingCarName(),racingCar);
         if(car != null){
             throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
         }

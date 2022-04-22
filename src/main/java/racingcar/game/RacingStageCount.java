@@ -11,4 +11,8 @@ public class RacingStageCount {
             throw new IllegalArgumentException("시도횟수는 숫자여야 한다.");
         }
     }
+
+    public int getStageCount() {
+        return stageCount;
+    }
 }
