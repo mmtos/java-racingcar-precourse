@@ -31,7 +31,7 @@ public class RacingGame {
         try{
             setRacingCars();
             setRacingStageCount();
-        }catch(IllegalArgumentException e){
+        }catch(IllegalArgumentException | IllegalStateException e){
             racingGameView.printErrorMessage(e);
             racingCars.reset();
             initGame();
@@ -52,7 +52,14 @@ public class RacingGame {
         for(String name : names){
             racingCarNameList.add(new RacingCarName(name));
         }
+        checkRacingCarNameListEmpty(racingCarNameList);
         return racingCarNameList;
+    }
+
+    private void checkRacingCarNameListEmpty(List<RacingCarName> racingCarNameList){
+        if(racingCarNameList.size() == 0){
+            throw new IllegalStateException("최소 1대의 자동차 이름을 입력해 주세요.");
+        }
     }
 
     private void setRacingStageCount(){

@@ -11,6 +11,14 @@ import racingcar.game.RacingStageCount;
 public class RacingGameTest {
 
     @Test
+    void 이름_빈값_오류_테스트(){
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            RacingCars racingCars = new RacingCars();
+            racingCars.addRacingCar(new RacingCar(new RacingCarName("")));
+        });
+    }
+
+    @Test
     void 이름_중복_오류_테스트(){
         assertThatIllegalArgumentException().isThrownBy(() -> {
             RacingCars racingCars = new RacingCars();
